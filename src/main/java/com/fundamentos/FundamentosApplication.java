@@ -94,6 +94,11 @@ public class FundamentosApplication implements CommandLineRunner {
 				.stream()
 				.forEach(user -> LOGGER.info("QueryMethod findByNameLikeOrderByIdDesc: usuario | "+user));
 
+		LOGGER.info("getAllByBirthDateAndEmail: " + userRepository.getAllByBirthDateAndEmail(
+							LocalDate.of(1999, 4, 10),
+							"melina@mk.com")
+						.orElseThrow( ()-> new RuntimeException("No se encontró el usuario Melina")));
+
 	}
 
 	private void imprimeUsuarios(){
