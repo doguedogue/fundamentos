@@ -77,6 +77,23 @@ public class FundamentosApplication implements CommandLineRunner {
 		LOGGER.info("QueryMethod findByNameAndEmail: " + userRepository.findByNameAndEmail("Noob", "noob@mk.com").
 				orElseThrow( ()-> new RuntimeException("No se encontró el usuario")));
 
+		LOGGER.info("QueryMethod findByNameLike: usuario");
+		userRepository.findByNameLike("%usuario%")
+				.stream()
+				.forEach(LOGGER::info);
+
+		userRepository.findByNameOrEmail("usuario1", "usuario9@mk.com")
+				.stream()
+				.forEach(user -> LOGGER.info("QueryMethod findByNameOrEmail: usuario10 | "+user));
+
+		userRepository.findByBirthDayBetween(LocalDate.of(1979, 7 , 1), LocalDate.of(1979, 7 , 5))
+				.stream()
+				.forEach(user -> LOGGER.info("QueryMethod findByBirdDateBetween: 1/7/1979 al 5/7/1979 | "+user));
+
+		userRepository.findByNameLikeOrderByIdDesc("%usuario%")
+				.stream()
+				.forEach(user -> LOGGER.info("QueryMethod findByNameLikeOrderByIdDesc: usuario | "+user));
+
 	}
 
 	private void imprimeUsuarios(){
@@ -90,9 +107,9 @@ public class FundamentosApplication implements CommandLineRunner {
 		User user5 = new User("user5", "user5@mk.com", LocalDate.of(1979, 7, 5));
 		User user6 = new User("user6", "user6@mk.com", LocalDate.of(1979, 7, 6));
 		User user7 = new User("user7", "user7@mk.com", LocalDate.of(1979, 7, 1));
-		User user8 = new User("user8", "user8@mk.com", LocalDate.of(1979, 7, 2));
-		User user9 = new User("user9", "user9@mk.com", LocalDate.of(1979, 7, 3));
-		User user10 = new User("user10", "user10@mk.com", LocalDate.of(1979, 7, 7));
+		User user8 = new User("usuario8", "usuario8@mk.com", LocalDate.of(1979, 7, 2));
+		User user9 = new User("usuario9", "usuario9@mk.com", LocalDate.of(1979, 7, 3));
+		User user10 = new User("usuario10", "usuario10@mk.com", LocalDate.of(1979, 7, 7));
 		List<User> usuarios = Arrays.asList(user1,user2,user3,user4,user5,
 				user6,user7,user8,user9,user10);
 		usuarios.stream().forEach(userRepository::save);
