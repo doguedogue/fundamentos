@@ -70,6 +70,13 @@ public class FundamentosApplication implements CommandLineRunner {
 				.stream()
 				.forEach( user -> LOGGER.info("Usuario con método SORT: "+user));
 
+		userRepository.findByName("user")
+				.stream()
+				.forEach( user -> LOGGER.info("QueryMethod findByName: "+user));
+
+		LOGGER.info("QueryMethod findByNameAndEmail: " + userRepository.findByNameAndEmail("Noob", "noob@mk.com").
+				orElseThrow( ()-> new RuntimeException("No se encontró el usuario")));
+
 	}
 
 	private void imprimeUsuarios(){
