@@ -32,4 +32,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
+
+    public User(String name, String email, LocalDate birthday) {
+        this.name = name;
+        this.email = email;
+        this.birthday = birthday;
+    }
 }
