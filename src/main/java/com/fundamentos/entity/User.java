@@ -27,15 +27,15 @@ public class User {
     @Column(name = "email", length = 50)
     private String email;
 
-    private LocalDate birthDay;
+    private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
 
-    public User(String name, String email, LocalDate birthDay) {
+    public User(String name, String email, LocalDate birthDate) {
         this.name = name;
         this.email = email;
-        this.birthDay = birthDay;
+        this.birthDate = birthDate;
     }
 }

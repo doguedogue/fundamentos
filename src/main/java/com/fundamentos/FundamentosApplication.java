@@ -86,7 +86,7 @@ public class FundamentosApplication implements CommandLineRunner {
 				.stream()
 				.forEach(user -> LOGGER.info("QueryMethod findByNameOrEmail: usuario10 | "+user));
 
-		userRepository.findByBirthDayBetween(LocalDate.of(1979, 7 , 1), LocalDate.of(1979, 7 , 5))
+		userRepository.findByBirthDateBetween(LocalDate.of(1979, 7 , 1), LocalDate.of(1979, 7 , 5))
 				.stream()
 				.forEach(user -> LOGGER.info("QueryMethod findByBirdDateBetween: 1/7/1979 al 5/7/1979 | "+user));
 
