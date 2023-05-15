@@ -24,6 +24,18 @@ public class GeneralConfiguration {
     @Value("${value.random}")
     private String random;
 
+    @Value("${jdbc.url}")
+    private String url;
+
+    @Value("${jdbc.driver}")
+    private String driver;
+
+    @Value("${jdbc.username}")
+    private String username;
+
+    @Value("${jdbc.password}")
+    private String password;
+
     @Bean
     public MyBeanProperties function(){
         return new MyBeanPropertiesImpl(name, apellido);
@@ -32,10 +44,10 @@ public class GeneralConfiguration {
     @Bean
     public DataSource dataSource(){
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:mem:testdb");
-        dataSourceBuilder.username("SA");
-        dataSourceBuilder.password("");
+        dataSourceBuilder.driverClassName(driver);
+        dataSourceBuilder.url(url);
+        dataSourceBuilder.username(username);
+        dataSourceBuilder.password(password);
         return dataSourceBuilder.build();
     }
 }
