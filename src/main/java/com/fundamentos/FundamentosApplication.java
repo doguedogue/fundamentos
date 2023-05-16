@@ -7,6 +7,7 @@ import com.fundamentos.component.ComponentDependency;
 import com.fundamentos.entity.User;
 import com.fundamentos.pojo.UserPojo;
 import com.fundamentos.repository.UserRepository;
+import com.fundamentos.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,18 +35,22 @@ public class FundamentosApplication implements CommandLineRunner {
 
 	private UserRepository userRepository;
 
+	private UserService userService;
+
 	public FundamentosApplication(@Qualifier("componentTwoImpl") ComponentDependency componentDependency,
 								  MyBean myBean,
 								  MyBeanWithDependency myBeanWithDependency,
 								  MyBeanProperties myBeanProperties,
 								  UserPojo userPojo,
-								  UserRepository userRepository) {
+								  UserRepository userRepository,
+								  UserService userService) {
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.myBeanWithDependency = myBeanWithDependency;
 		this.myBeanProperties = myBeanProperties;
 		this.userPojo = userPojo;
 		this.userRepository = userRepository;
+		this.userService = userService;
 	}
 
 	public static void main(String[] args) {
@@ -55,11 +60,32 @@ public class FundamentosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//clases_anteriores();
-		saveUsersInDB();
-		imprimeUsuarios();
-		getInformacionJPQL();
+		//saveUsersInDB();
+		//imprimeUsuarios();
+		//getInformacionJPQL();
+		saveWithErrorTransactional();
 	}
 
+	private void saveWithErrorTransactional (){
+		User test1 = new User("test1", "test1@mk.com", LocalDate.of(2000, 3, 25));
+		User test2 = new User("test2", "test2@mk.com", LocalDate.of(1999, 4, 10));
+		String correo_duplicado = "test1@mk.com";
+		User test3 = new User("test3", correo_duplicado, LocalDate.of(1979, 7, 24));
+		User test4 = new User("test4", "test4@mk.com", LocalDate.of(1979, 7, 4));
+
+		List<User> users = Arrays.asList(test1, test2, test3, test4);
+
+		LOGGER.info("Save Transactional Service");
+		try {
+			userService.saveTransactional(users);
+		}catch (Exception e){
+			LOGGER.error("Error en Save Transactional Service: "+e);
+		}
+
+		userService.getAllUsers()
+				.stream()
+				.forEach(LOGGER::info);
+	}
 	private void getInformacionJPQL(){
 		String email = "noob@mk.com";
 		LOGGER.info("Buscando usuario con email:  "+ email );
