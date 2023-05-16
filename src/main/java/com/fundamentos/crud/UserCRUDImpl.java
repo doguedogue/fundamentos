@@ -22,4 +22,19 @@ public class UserCRUDImpl implements UserCRUD{
     public User save(User newUser) {
         return userService.save(newUser);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        userService.deleteUser(id);
+    }
+
+    @Override
+    public User updateUser(User updUser, Long id) {
+        return userService.updateUser(updUser, id);
+    }
+
+    @Override
+    public User getUser(Long id) {
+        return userService.getUser(id);
+    }
 }
