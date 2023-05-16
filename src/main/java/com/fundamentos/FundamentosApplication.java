@@ -60,10 +60,10 @@ public class FundamentosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//clases_anteriores();
-		//saveUsersInDB();
+		saveUsersInDB();
 		//imprimeUsuarios();
 		//getInformacionJPQL();
-		saveWithErrorTransactional();
+		//saveWithErrorTransactional();
 	}
 
 	private void saveWithErrorTransactional (){

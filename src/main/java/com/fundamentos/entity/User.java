@@ -1,5 +1,7 @@
 package com.fundamentos.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -30,6 +32,7 @@ public class User {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
 
