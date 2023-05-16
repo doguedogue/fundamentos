@@ -14,4 +14,6 @@ public interface UserCRUD {
     User updateUser(User updUser, Long id);
 
     User getUser(Long id);
+
+    List<User> getUserPageable(int page, int size);
 }

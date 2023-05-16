@@ -37,4 +37,9 @@ public class UserCRUDImpl implements UserCRUD{
     public User getUser(Long id) {
         return userService.getUser(id);
     }
+
+    @Override
+    public List<User> getUserPageable(int page, int size) {
+        return userService.getUserPageable(page,size);
+    }
 }

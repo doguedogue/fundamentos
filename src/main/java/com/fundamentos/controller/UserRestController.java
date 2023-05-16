@@ -3,7 +3,6 @@ package com.fundamentos.controller;
 import com.fundamentos.crud.UserCRUD;
 import com.fundamentos.entity.User;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,5 +58,10 @@ public class UserRestController {
     @GetMapping("/{id}")
     User getUser(@PathVariable Long id){
         return userCRUD.getUser(id);
+    }
+
+    @GetMapping("/pageable")
+    List<User> getUserPageable(@RequestParam int page, @RequestParam int size){
+        return userCRUD.getUserPageable(page, size);
     }
 }
