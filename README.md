@@ -2,3 +2,4 @@
  
  - Java 11 ☕
  - Maven
+ - IntelliJ
