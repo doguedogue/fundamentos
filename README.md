@@ -1,6 +1,6 @@
 ﻿# Fundamentos Spring Boot 🚀
  
  - Java 11 ☕
- - Spring Boot
+ - Spring Boot 2.5.0
  - Maven
  - IntelliJ
