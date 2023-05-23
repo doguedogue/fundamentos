@@ -4,3 +4,4 @@
  - Spring Boot 2.5.0
  - Maven
  - IntelliJ
+ - Database H2
