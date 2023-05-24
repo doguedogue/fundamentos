@@ -3,5 +3,5 @@
  - Java 11 ☕
  - Spring Boot 2.5.0
  - Maven
- - IntelliJ
+ - IntelliJ IDEA
  - Database H2
