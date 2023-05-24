@@ -1,4 +1,4 @@
-﻿# Fundamentos Spring Boot 🚀
+﻿# Spring Boot Foundations 🚀
  
  - Java 11 ☕
  - Spring Boot 2.5.0
