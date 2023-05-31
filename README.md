@@ -1,6 +1,6 @@
 ﻿# Spring Boot Foundations 🚀
  
- - Java 11 ☕
+ - Java 8, 11 ☕
  - Spring Boot 2.5.0
  - Maven
  - IntelliJ IDEA Community 2023.1.1
